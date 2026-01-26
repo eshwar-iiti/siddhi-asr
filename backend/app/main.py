@@ -6,7 +6,9 @@ import os
 
 from app.stt import transcribe_audio
 from app.medical_corrector import medical_text_correct
-app = FastAPI()
+from app.utils import summarize_medical_text
+
+app = FastAPI(title="Siddhi ASR API")
 
 app.add_middleware(
     CORSMiddleware,
@@ -22,15 +24,28 @@ async def transcribe(file: UploadFile = File(...)):
         shutil.copyfileobj(file.file, tmp)
         tmp_path = tmp.name
 
-    # Transcribe using file PATH
-    text = transcribe_audio(tmp_path)
-    clean_text = medical_text_correct(text)
+    try:
+        # Transcribe using file PATH
+        raw_text = transcribe_audio(tmp_path)
+        
+        # Correct medical terms using LLM
+        medical_text = medical_text_correct(raw_text)
+        
+        # Generate structured summary
+        summary = summarize_medical_text(medical_text)
 
-    # Cleanup
-    os.remove(tmp_path)
+        return {
+            "raw_text": raw_text,
+            "medical_text": medical_text,
+            "summary": summary
+        }
+    except Exception as e:
+        return {"error": str(e)}
+    finally:
+        # Cleanup
+        if os.path.exists(tmp_path):
+            os.remove(tmp_path)
 
-    return {
-    "raw_text": text,
-    "medical_text": clean_text
-}
-
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy"}
