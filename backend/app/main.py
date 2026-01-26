@@ -19,30 +19,30 @@ app.add_middleware(
 
 @app.post("/transcribe")
 async def transcribe(file: UploadFile = File(...)):
-    # Save uploaded audio to temp file
     with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as tmp:
         shutil.copyfileobj(file.file, tmp)
         tmp_path = tmp.name
 
     try:
-        # Transcribe using file PATH
-        raw_text = transcribe_audio(tmp_path)
+        raw_text = transcribe_audio(tmp_path) # speech to text
+        medical_text = medical_text_correct(raw_text) # LLM fixing
         
-        # Correct medical terms using LLM
-        medical_text = medical_text_correct(raw_text)
-        
-        # Generate structured summary
-        summary = summarize_medical_text(medical_text)
+        # summary = summarize_medical_text(medical_text)
+
+        # return {
+        #     "raw_text": raw_text,
+        #     "medical_text": medical_text,
+        #     "summary": summary
+        # }
 
         return {
             "raw_text": raw_text,
-            "medical_text": medical_text,
-            "summary": summary
-        }
+            "medical_text": medical_text
+                }
+    
     except Exception as e:
         return {"error": str(e)}
     finally:
-        # Cleanup
         if os.path.exists(tmp_path):
             os.remove(tmp_path)
 

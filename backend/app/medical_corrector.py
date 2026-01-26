@@ -1,19 +1,13 @@
 import os
-import json
-import re
-from typing import Optional
-from openai import OpenAI
+from google import genai
+from google.genai import types
+from dotenv import load_dotenv
+load_dotenv()
 
-# Initialize OpenAI client for Gemini (using the provided environment variable)
-# The user mentioned providing Gemini key in .env, we'll assume it's set as GEMINI_API_KEY
-# For Manus environment, we use the pre-configured OpenAI client which can point to Gemini
-client = OpenAI()
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 def get_medical_correction(text: str) -> str:
-    """
-    Uses LLM to correct medical terminology in the transcribed text, 
-    specifically handling Indian accents and common misspellings.
-    """
+ 
     prompt = f"""
     You are a medical transcription expert. Your task is to correct the following transcription 
     which was generated from a doctor's speech (Indian accent). 
@@ -31,28 +25,20 @@ def get_medical_correction(text: str) -> str:
     """
     
     try:
-        response = client.chat.completions.create(
-            model="gpt-4.1-mini", # Using available model in Manus
-            messages=[
-                {"role": "system", "content": "You are a helpful medical assistant specializing in transcription correction."},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.1
+        print("Calling Gemini")
+        response = client.models.generate_content(
+            model="models/gemini-2.5-flash",
+            contents=prompt
         )
-        return response.choices[0].message.content.strip()
+        return response.text.strip()
     except Exception as e:
         print(f"Error in LLM correction: {e}")
-        return text # Fallback to original text
+        return text 
 
 def medical_text_correct(text: str) -> str:
-    """
-    Main entry point for medical text correction.
-    Combines LLM correction with any local dictionary logic if needed.
-    """
     if not text:
         return ""
     
-    # Primary correction via LLM
     corrected_text = get_medical_correction(text)
     
     return corrected_text

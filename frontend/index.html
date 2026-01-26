@@ -1,13 +1,55 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>frontend</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>SIDDHI Medical ASR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>SIDDHI <span>Medical ASR</span></h1>
+    <p>AI-powered medical speech transcription</p>
+  </header>
+
+  <main>
+    <section class="control-panel">
+    <div class="actions">
+        <button id="recordBtn" class="primary">🎙️ Record</button>
+        <button id="stopBtn" class="danger" disabled>⏹ Stop</button>
+
+        <label class="file-upload">
+        <input type="file" id="audioFile" accept="audio/*" hidden />
+        📂 Select audio
+        </label>
+
+        <button id="uploadBtn" class="accent">⬆️ Transcribe</button>
+    </div>
+
+    <div class="wave-container">
+        <div id="waveform"></div>
+
+        <div class="wave-controls">
+        <button id="playBtn">▶️ Play</button>
+        <span id="time">0:00</span>
+        </div>
+    </div>
+    </section>
+
+    <script src="wavesurfer.min.js"></script>
+
+
+
+    <section class="text-section">
+      <h2>Raw Transcription</h2>
+      <div id="rawText" class="text-box"></div>
+
+      <h2>Medical-Corrected Transcription</h2>
+      <div id="medicalText" class="text-box"></div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
 </html>

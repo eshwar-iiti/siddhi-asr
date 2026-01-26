@@ -1,0 +1,15 @@
+✅ TEXT LLM OK: models/gemini-2.5-flash
+❌ models/gemini-2.5-flash-preview-tts — 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'The requested combination of response modalities (TEXT) is not supported by the model. models/gemini-2.5-flash-preview-tts accepts the following combination of response modalities:\n* AUDIO\n', 'status': 'INVALID_ARGUMENT'}}
+✅ TEXT LLM OK: models/gemma-3-1b-it
+✅ TEXT LLM OK: models/gemma-3-4b-it
+❌ models/gemma-3-12b-it — 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The model is overloaded. Please try again later.', 'status': 'UNAVAILABLE'}}
+✅ TEXT LLM OK: models/gemma-3-27b-it
+✅ TEXT LLM OK: models/gemma-3n-e4b-it
+✅ TEXT LLM OK: models/gemma-3n-e2b-it
+✅ TEXT LLM OK: models/gemini-flash-latest
+✅ TEXT LLM OK: models/gemini-flash-lite-latest
+✅ TEXT LLM OK: models/gemini-2.5-flash-lite
+✅ TEXT LLM OK: models/gemini-2.5-flash-preview-09-2025
+✅ TEXT LLM OK: models/gemini-2.5-flash-lite-preview-09-2025
+✅ TEXT LLM OK: models/gemini-3-flash-preview
+✅ TEXT LLM OK: models/gemini-robotics-er-1.5-preview

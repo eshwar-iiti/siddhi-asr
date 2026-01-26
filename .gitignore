@@ -1,11 +1,4 @@
-# Python
-venv/
 backend/venv/
-__pycache__/
-*.pyc
+backend/app/__pycache__/
+backend/.env
 
-# Node
-node_modules/
-
-# Env
-.env
