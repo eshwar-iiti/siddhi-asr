@@ -9,18 +9,45 @@ client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 def summarize_medical_text(text: str) -> dict:
     prompt = f"""
-    Analyze the following medical transcription and extract key information into a structured JSON format.
+You are a medical information extraction system.
 
-    Transcription: "{text}"
+Task:
+Analyze the following medical transcription and extract structured clinical information.
 
-    Extract the following fields:
-    1. reason_for_visit
-    2. diagnosis
-    3. medications (name, dosage, duration)
-    4. advice
+Transcription:
+"{text}"
 
-    Return ONLY a valid JSON object.
-    """
+Instructions:
+- Extract only information explicitly mentioned in the transcription.
+- Do NOT infer or hallucinate missing details.
+- If a field is not mentioned, return null (do not guess).
+- Output must be valid JSON only.
+- Do not include any explanation, commentary, or extra text.
+
+Required JSON schema:
+
+{
+  "reason_for_visit": string | null,
+  "diagnosis": string | null,
+  "medications": [
+    {
+      "name": string,
+      "dosage": string | null,
+      "duration": string | null
+    }
+  ],
+  "advice": string | null
+}
+
+Additional Rules:
+- If no medications are mentioned, return an empty list [].
+- Preserve original medical terminology from the transcription.
+- Do not rephrase unless necessary for clarity.
+- Ensure the JSON is properly formatted and parsable.
+
+Return ONLY the JSON object.
+"""
+
 
     try:
         response = client.models.generate_content(
