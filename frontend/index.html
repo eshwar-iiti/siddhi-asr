@@ -41,15 +41,40 @@
 
 
     <section class="text-section">
-      <h2>Raw Transcription</h2>
+      <h2>Whisper Results</h2>
       <div id="rawText" class="text-box"></div>
 
-      <h2>Medical-Corrected Transcription</h2>
+      <h2>SIDDHI ASR Results</h2>
       <div id="medicalText" class="text-box"></div>
+      <h2>Medical Summary</h2>
+<div id="summaryBox" class="summary-box">
+
+  <div class="summary-item">
+    <strong>Reason for Visit:</strong>
+    <span id="reasonVisit">-</span>
+  </div>
+
+  <div class="summary-item">
+    <strong>Diagnosis:</strong>
+    <span id="diagnosis">-</span>
+  </div>
+
+  <div class="summary-item">
+    <strong>Medications:</strong>
+    <ul id="medicationsList"></ul>
+  </div>
+
+  <div class="summary-item">
+    <strong>Advice:</strong>
+    <span id="advice">-</span>
+  </div>
+
+</div>
+
     </section>
 
   </main>
 
-  <script src="app.js"></script>
+  <script type="module" src="/app.js"></script>
 </body>
 </html>

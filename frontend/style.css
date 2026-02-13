@@ -222,3 +222,29 @@ audio {
   color: #e5e7eb;
   cursor: pointer;
 }
+
+.summary-box {
+  background: #111827;              /* same as text-box */
+  border: 1px solid #1f2937;        /* consistent border */
+  padding: 20px;
+  border-radius: 14px;
+  margin-top: 16px;
+  color: #e6e6eb;                   /* force readable text */
+}
+
+.summary-item {
+  margin-bottom: 14px;
+}
+
+.summary-item strong {
+  color: #4fd1c5;                   /* teal accent like header */
+}
+
+.summary-item ul {
+  margin-top: 6px;
+  padding-left: 20px;
+}
+
+.summary-item li {
+  margin-bottom: 6px;
+}

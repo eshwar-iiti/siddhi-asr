@@ -12,6 +12,11 @@ const medicalTextDiv = document.getElementById("medicalText");
 const playBtn = document.getElementById("playBtn");
 const timeSpan = document.getElementById("time");
 
+const reasonVisitSpan = document.getElementById("reasonVisit");
+const diagnosisSpan = document.getElementById("diagnosis");
+const medicationsList = document.getElementById("medicationsList");
+const adviceSpan = document.getElementById("advice");
+
 /* =======================
    STATE
 ======================= */
@@ -151,6 +156,15 @@ function highlightDiff(oldText, newText) {
 /* =======================
    RENDER RESULT
 ======================= */
+// function renderResult(data) {
+//   rawTextDiv.innerText = data.raw_text || "-";
+
+//   medicalTextDiv.innerHTML = highlightDiff(
+//     data.raw_text || "",
+//     data.medical_text || ""
+//   );
+// }
+
 function renderResult(data) {
   rawTextDiv.innerText = data.raw_text || "-";
 
@@ -158,4 +172,35 @@ function renderResult(data) {
     data.raw_text || "",
     data.medical_text || ""
   );
+
+  // ===== Structured Summary Rendering =====
+  if (!data.summary) return;
+
+  const summary = data.summary;
+
+  reasonVisitSpan.textContent =
+    summary.reason_for_visit || "-";
+
+  diagnosisSpan.textContent =
+    summary.diagnosis || "-";
+
+  adviceSpan.textContent =
+    summary.advice || "-";
+
+  medicationsList.innerHTML = "";
+
+  if (!summary.medications || summary.medications.length === 0) {
+    const li = document.createElement("li");
+    li.textContent = "No medications prescribed";
+    medicationsList.appendChild(li);
+  } else {
+    summary.medications.forEach(med => {
+      const li = document.createElement("li");
+
+      li.textContent =
+        `${med.name} | Dosage: ${med.dosage || "N/A"} | Duration: ${med.duration || "N/A"}`;
+
+      medicationsList.appendChild(li);
+    });
+  }
 }
