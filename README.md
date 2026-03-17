@@ -5,6 +5,13 @@
 Traditional ASR systems often struggle with Indian regional accents, background noise in busy clinics, and complex medical terminology. Siddhi-ASR is a noise-robust, accent-adapted medical speech-to-text system designed specifically for the Indian healthcare context.
 By utilizing a two-step pipeline—Acoustic Transcription followed by LLM-based Medical Correction—Siddhi-ASR significantly reduces Word Error Rate (WER) and provides structured medical summaries.
 
+## **Demo Video**
+
+https://github.com/user-attachments/assets/4c260523-76c7-42c5-ab64-9ebd1219e8de
+
+
+
+
 ## **Key Features**
 
 Accent Adaptation: Fine-tuned logic to handle Indian and regional English accents.
@@ -72,3 +79,5 @@ cd ../frontend
 npm install
 
 npm start
+
+
