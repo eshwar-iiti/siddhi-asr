@@ -52,17 +52,23 @@ Gemini API Key (for the LLM correction layer)
 Clone the Repo: (Bash) 
 
 git clone https://github.com/eshwar-iiti/siddhi-asr.git
+
 cd siddhi-asr
 
 ### Backend Setup:(Bash)
 
 cd backend
+
 pip install -r requirements.txt
+
 (Add your API Key to .env)
+
 python main.py
 
 ### Frontend Setup:(Bash)
 
 cd ../frontend
+
 npm install
+
 npm start
