@@ -42,9 +42,12 @@ Summary: The system outputs a structured medical summary for the doctor.
 
 ## **Performance Results** 
 Our testing shows significant improvements over raw ASR outputs:
-Average Raw WER: 0.3201 
-After LLM correction- Average Corrected WER: 0.2343 (~26.8% Improvement)
-Corpus-level WER: Improved from 0.1677 to 0.1400 (~16.5% Improvement)
+### *Average Raw WER: 
+0.3201 
+### *After LLM correction- Average Corrected WER: 
+0.2343 (~26.8% Improvement)
+### *Corpus-level WER: 
+Improved from 0.1677 to 0.1400 (~16.5% Improvement)
 
 ## **How to Use**
 ### Prerequisites
