@@ -79,13 +79,12 @@ python main.py
 
 cd ../frontend
 
-## Report/ Poster:
-![presentation_poster_siddhi](https://github.com/user-attachments/assets/e3143caf-317f-4e88-bca1-e1641fb5f152)
-
-
-
 npm install
 
 npm start
+
+
+## Report/ Poster:
+![presentation_poster_siddhi](https://github.com/user-attachments/assets/e3143caf-317f-4e88-bca1-e1641fb5f152)
 
 
