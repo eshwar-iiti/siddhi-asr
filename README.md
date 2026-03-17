@@ -40,35 +40,29 @@ After LLM correction- Average Corrected WER: 0.2343 (~26.8% Improvement)
 Corpus-level WER: Improved from 0.1677 to 0.1400 (~16.5% Improvement)
 
 ## **How to Use**
-###Prerequisites
+### Prerequisites
 Python 3.9+
 
 Node.js & npm
 
 Gemini API Key (for the LLM correction layer)
 
-###Installation
+### Installation
 
 Clone the Repo: (Bash) 
 
 git clone https://github.com/eshwar-iiti/siddhi-asr.git
-
 cd siddhi-asr
 
-###Backend Setup:(Bash)
+### Backend Setup:(Bash)
 
 cd backend
-
 pip install -r requirements.txt
-
 # Add your API Key to .env
-
 python main.py
 
-###Frontend Setup:(Bash)
+### Frontend Setup:(Bash)
 
 cd ../frontend
-
 npm install
-
 npm start
