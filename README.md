@@ -58,7 +58,7 @@ cd siddhi-asr
 
 cd backend
 pip install -r requirements.txt
-# Add your API Key to .env
+(Add your API Key to .env)
 python main.py
 
 ### Frontend Setup:(Bash)
