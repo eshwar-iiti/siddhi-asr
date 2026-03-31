@@ -7,8 +7,10 @@ By utilizing a two-step pipeline—Acoustic Transcription followed by LLM-based 
 
 ## **Demo Video**
 
-https://github.com/user-attachments/assets/4c260523-76c7-42c5-ab64-9ebd1219e8de
 
+
+
+https://github.com/user-attachments/assets/737721d0-0ad9-4649-a112-fed869f0b7b5
 
 
 
